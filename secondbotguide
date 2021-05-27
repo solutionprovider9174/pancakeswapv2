@@ -1,0 +1,34 @@
+Main coin/token: The token or coin you want to trade tokens for and with
+
+Buy/Sell boundary: The amount of balance (calculated in $) that has to be present in (main-)tokens or coins has to be present in the wallet, to deduct whether the latest action was a buy or a sell. For instance: if the value is 100, your maincoin option BNB and have 120$ worth of BNB on your address, the bot will see the latest action as "sell".
+
+Token address: Fill the token address of the token you want to trade (such as 0x0000000000000000000000000000000000000000)
+
+Token name: The name of the token, fill it in yourself
+
+Dec.: The amount of decimals the token operates with (18 is normal)
+
+Sell($): The price you want the trader to sell the token for (0.01 = 1 dollar cent)
+
+Buy($): The price you want the trader to buy the token for (0.01 = 1 dollar cent)
+
+Activate and Trade with BNB: Toggle if you want to activate trading with your main-coin/token
+
+Trade with BEP (Experimental!): Toggle if you want to trade the token with other BEP20 tokens of which this option is activated (see tokentokennumerator)
+
+Stoploss: Toggle to activate stoploss (0.01 = 1 dollar cent)
+
+Second(s) between checking price: Standard is 4 seconds. With a infura server with max 100.000tx/day 4 seconds is good for 2 activated token 24hr/day
+
+Seconds waiting between trades: depends on how fast transactions finalize Max slippage: The maximum slippage you want to allow while trading (0.03 = 3%) $ to keep in ETH after trade: The amount of ETH/main token you want to keep after each trade (excluding transaction fees) in terms of $. GWEI: The amount of gas you want to use for each trade (5 GWEI is fine)
+
+Different deposit address: Use this if you want the swap output to go to a different ethereum address (without extra fees).
+
+Tokentokennumerator (Experimental!): This value lets you trade ERC tokens with each other. The code to create the value is as followed:
+
+if pricetoken1usd > ((token1high + token1low) / 2) and pricetoken2usd < ((token2high + token2low) / 2):
+  token1totoken2 = ((pricetoken1usd - token1low) / (token1high - token1low)) / ((pricetoken2usd - token2low) / (token2high - token2low))
+
+If you dont want to wait till the token1 is sold for the maincoinoption, because you are uncertain whether token2 will still be at this price level or think that token1 will drop, you can use this function. To use this function, "Trade with ERC" should be activated for at least 2 tokens, and the highs and lows should be set seriously.
+
+As an example, if the current price of token1 is $0.9 and its set "high"=$1 and "low"=$0, the value of this token is seen as "90%". Token2 also has a high of $1, but the current price is 0.2$, value of this token is seen as 20%. The tokentokenmnumerator is set at 3.3. If we divide the 90% by the 20%, we get 4.5, which is higher than 3.3, which means that token1 gets traded for token2 instantly. If the tokentokennumerator was set to 5, the swap would not happen.
