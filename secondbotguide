@@ -1,3 +1,24 @@
+
+
+    Read prerequisites
+
+    Download the latest release or download "configfile.py" and "pancakeswap_bot.exe" from the repository.
+
+    Open "configfile.py" (with notepad for instance) and add your ethereum address and personal key at the bottom of the file between the quotation marks('').
+
+...
+my_address = ''
+my_pk = ''
+
+    Run "pancakeswap_bot.exe"
+
+    Make sure configfile.py and bot.exe are in the same folder.
+
+    Edit settings according to choice.
+
+
+
+
 Main coin/token: The token or coin you want to trade tokens for and with
 
 Buy/Sell boundary: The amount of balance (calculated in $) that has to be present in (main-)tokens or coins has to be present in the wallet, to deduct whether the latest action was a buy or a sell. For instance: if the value is 100, your maincoin option BNB and have 120$ worth of BNB on your address, the bot will see the latest action as "sell".
